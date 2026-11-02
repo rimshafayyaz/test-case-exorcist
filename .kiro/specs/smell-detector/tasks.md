@@ -1,50 +1,88 @@
-# Tasks: smell-detector
+# Implementation Plan
 
-## Task 1 — Bootstrap packages/core
-- [ ] Init pnpm workspace at repo root (`pnpm-workspace.yaml`)
-- [ ] Scaffold `packages/core` with `package.json`, `tsconfig.json` (strict), `vitest.config.ts`
-- [ ] Install `compromise` and `vitest` as dependencies
-- [ ] Create `packages/core/src/models/step.ts`, `finding.ts`, `index.ts`
+- [ ] 1. Set up the workspace and the core package
+  - Create `pnpm-workspace.yaml`, root `package.json` scripts (`build`, `test`, `lint`) and `tsconfig.base.json` with strict mode
+  - Create `packages/core` with `package.json` (`@exorcist/core`, ESM), `tsconfig.json`, `vitest.config.ts`
+  - Install `compromise` and dev dependencies `vitest`, `typescript`
+  - Add one placeholder test and confirm `pnpm -F @exorcist/core test` passes
+  - _Requirements: 12.3, 13.1_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 2 — Unverified Action detector (simplest; no NLP)
-- [ ] Implement `packages/core/src/detectors/unverifiedAction.ts`
-- [ ] Write `packages/core/tests/detectors/unverifiedAction.test.ts`
-  - smelly: step with no expectedResult
-  - clean: step with a non-empty expectedResult
+- [ ] 2. Define the data models and smell constants
+  - Create `src/models/` with `TestSuite`, `TestCase`, `Step`, `Finding`, `ReviewCandidate`, `DetectionResult`, `SmellName`, `FixName`
+  - Create `src/smells.ts` with ghost names and fix names exactly as in `docs/smells.md`
+  - Add a test that every `SmellName` has a ghost name and fix name
+  - _Requirements: 2.1, 2.4_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 3 — Conditional Test detector
-- [ ] Implement `packages/core/src/detectors/conditionalTest.ts` (regex)
-- [ ] Write tests: smelly ("If the popup appears, close it"), clean ("Click the popup close button")
+- [ ] 3. Build the text utilities
+  - Implement `splitClauses`, `tag` (compromise wrapper with character offsets), `isImperativeStart`, `findWords`
+  - Create `wordLists.ts` (vague words, verification verbs, prerequisite words, outcome words, subordinating conjunctions) from `docs/smells.md`
+  - Verify compromise tag names against its docs; unit-test each utility
+  - _Requirements: 2.2, 10.2_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 4 — Misplaced Verification detector
-- [ ] Implement `packages/core/src/detectors/misplacedVerification.ts` (regex on action)
-- [ ] Write tests: smelly ("Verify the total is 100"), clean ("Enter the total as 100")
+- [ ] 4. Implement the Unverified Action detector
+  - `src/detectors/unverifiedAction.ts`: report when a step has no non-empty verification
+  - Tests: smelly "Click Save." with no verification; clean "Click Save." with "A 'Saved' message appears."; whitespace-only verification counts as missing
+  - Test (navigation exception): step `action: "Open the browser."` with no verification, immediately followed by a step with a non-empty verification → finding with `severity: "low"` and a reason that notes the missing verification may be intentional
+  - _Requirements: 9.1, 9.2, 9.3, 9.4_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 5 — Misplaced Action detector
-- [ ] Implement `packages/core/src/detectors/misplacedAction.ts` (compromise POS on expectedResult)
-- [ ] Write tests: smelly (expectedResult: "Click OK"), clean (expectedResult: "The dialog closes")
+- [ ] 5. Implement the Conditional Test detector
+  - Subordinating-conjunction match in actions and verifications; "when" without a condition becomes a review candidate
+  - Tests: "If you have a USB drive, plug it in." (smelly), "Unless the dialog closes, press Esc." (smelly), "Plug the USB drive into a free port." (clean)
+  - _Requirements: 4.1, 4.2, 11.1_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 6 — Misplaced Precondition detector
-- [ ] Implement `packages/core/src/detectors/misplacedPrecondition.ts` (regex)
-- [ ] Write tests: smelly ("Make sure the user is logged in"), clean ("Log in as admin")
+- [ ] 6. Implement the Misplaced Verification detector
+  - Verification verb anywhere in the action (excluding "make sure"/"ensure that" + state description in the first step), or "should" / "must be displayed"
+  - Tests: "Close flip and check app continuity.", "Verify the total is 100.", "The menu should appear." (smelly); "Close the flip." (clean)
+  - Tie-break tests: "Make sure the user is logged in." as step 3 → Misplaced Verification only (not Misplaced Precondition); "Ensure the total is 100." in any step → Misplaced Verification
+  - _Requirements: 8.1, 8.2_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 7 — Ambiguous Test detector
-- [ ] Build vague-word list in `packages/core/src/detectors/wordLists.ts`
-- [ ] Implement `packages/core/src/detectors/ambiguousTest.ts`
-- [ ] Write tests: smelly ("Check the page works properly"), clean ("Check the page title is 'Dashboard'")
+- [ ] 7. Implement the Misplaced Action detector
+  - Verification clause starting with a non-verification imperative verb; ambiguous verb/noun starts become review candidates
+  - Tests: verification "Click OK to continue." (smelly); "The confirmation dialog closes." and "Verify the dialog closes." (clean)
+  - _Requirements: 6.1, 6.2, 11.1_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 8 — Eager Action detector
-- [ ] Implement `packages/core/src/detectors/eagerAction.ts` (compromise verb count)
-- [ ] Write tests: smelly ("Open settings, change language and save"), clean ("Open settings")
+- [ ] 8. Implement the Misplaced Precondition detector
+  - First step only: subject + auxiliary + past participle, or prerequisite words, or "make sure"/"ensure that" + state description
+  - Tests: "The monitor is not connected, and the PC is not paired." and "The user is already logged in." as step 1 (smelly); same text as step 3 (not reported); "Log in as the admin user." (clean)
+  - Tie-break test: "Make sure the user is logged in." as step 1 → Misplaced Precondition only (not Misplaced Verification)
+  - _Requirements: 7.1, 7.2, 7.3_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 9 — detectAll + deduplication
-- [ ] Implement `packages/core/src/detectors/index.ts` with `detectAll` and `deduplicate`
-- [ ] Write `packages/core/tests/detectors/detectAll.test.ts`
-  - empty input → `[]`
-  - mixed suite → findings only on smelly steps
-  - duplicate finding (same stepIndex+field+smellName) → deduplicated to one
+- [ ] 9. Implement the Eager Action detector
+  - Count clauses that start with an imperative verb; ≥ 2 → finding with the count in the reason
+  - Tests: "Open settings, change language and save." (3 actions), "Close flip and reopen the app." (2 actions); "Open settings." (clean)
+  - _Requirements: 5.1, 5.2_
+  - Add a line to `docs/kiro-log.md`
 
-## Task 10 — Public API
-- [ ] Implement `packages/core/src/index.ts` with the public exports
-- [ ] Verify `pnpm -F @exorcist/core test` passes all tests
-- [ ] Confirm 1,000-step run completes in < 500 ms (add a simple perf test or note)
+- [ ] 10. Implement the Ambiguous Test detector
+  - Vague-word list → finding; POS-only patterns (verb + indefinite determiner, indefinite pronoun, comparative/superlative, manner adverb) → review candidate
+  - Tests: "Check the page loads quickly." (smelly), "Open any application and suspend machine." (review candidate); "The page loads within 2 seconds." (clean)
+  - _Requirements: 3.1, 3.2, 3.3, 3.4, 11.1_
+  - Add a line to `docs/kiro-log.md`
+
+- [ ] 11. Implement the orchestrator
+  - `detectAll` and `detectSmell` in `src/detectors/index.ts`: run all detectors with try/catch, dedupe, drop duplicate review candidates, sort
+  - Tests: empty suite → empty result; detector error is recorded and others still run; duplicates removed; keyword-ownership test ("Verify the total is 100." only gives Misplaced Verification); tie-break ownership test ("Make sure the user is logged in." as step 1 produces exactly one finding: Misplaced Precondition)
+  - _Requirements: 1.1, 1.2, 1.3, 1.4, 10.1, 11.2_
+  - Add a line to `docs/kiro-log.md`
+
+- [ ] 12. Add fixtures and the integration test
+  - `datasets/samples/smells-fixture.json`: one test case per smell plus one clean test case (synthetic text and the paper examples)
+  - The fixture MUST include at least one `TestCase` with a non-empty `preconditions[]`; assert that precondition text is never returned as a finding (detectors only inspect steps)
+  - Note: accuracy measurement on the labelled benchmark (103 steps, 15 cases from Zenodo https://doi.org/10.5281/zenodo.20549059) is handled by the separate `benchmark` spec, not here
+  - Integration test asserting the exact findings for the fixture
+  - _Requirements: 1.1, 2.1, 2.3, 12.2_
+  - Add a line to `docs/kiro-log.md`
+
+- [ ] 13. Expose the public API and check performance
+  - Export functions and types from `packages/core/src/index.ts`
+  - Performance test: 1,000 generated steps in under 500 ms
+  - Update `docs/kiro-log.md` with what was built and any decisions changed during implementation
+  - _Requirements: 12.1, 13.1_

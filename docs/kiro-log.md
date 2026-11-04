@@ -143,3 +143,19 @@ Used for the Kiroween 2026 write-up.
 - All 118 tests pass; TypeScript strict mode clean.
 
 - Task 12 · smell-detector spec · Created datasets/samples/smells-fixture.json (8 cases: one per smell + one clean) and packages/core/tests/integration/fixture.test.ts (integration tests asserting exact findings, clean case, preconditions ignored).
+
+## 2026-11-03 to 2026-11-04
+
+### Sessions 7–10 — Reviews of smell-detector tasks 8–13
+
+**Feature:** smell-detector tasks 8–13 (Misplaced Precondition, Eager Action, Ambiguous Test, orchestrator, fixtures, public API and performance)
+
+**What Kiro did:**
+- Reviewed the implementation of each task against `.kiro/specs/smell-detector/requirements.md` and `design.md`, task by task, and reported gaps and risks before the task was ticked.
+- Task 12: created the smells fixture and integration test (see the entry above).
+- Kiro's sandbox could not run node/pnpm, so it predicted the test results instead of running them. One predicted fixture expectation was wrong (a step carried two smells); the fixture step was changed to "Reload the page quickly." and the tests were then run locally.
+- TODO (Rimsha): add the main findings from each Kiro review chat (one line per task).
+
+### Built outside Kiro, from the Kiro specs
+
+The scorer, fixers, LLM reviewer, importers, benchmark and web app were written with another AI coding assistant, working from specs and task lists in `.kiro/specs/` (scorer, fixer, llm-reviewer, importers). Kiro was used for the reviews above while Kiro credits were limited (they reset on 2026-12-01).

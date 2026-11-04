@@ -144,6 +144,8 @@ export function exorciseSuite(suite: TestSuite): { suite: TestSuite; applied: Fi
   const cases = suite.cases.flatMap(original => {
     let queue: TestCase[] = [cloneCase(original)]
     const done: TestCase[] = []
+    // Never go back to a version seen before: two fixes must not undo each other.
+    const seen = new Set<string>([caseToText(original)])
     let rounds = 0
     while (queue.length > 0) {
       const testCase = queue.shift()!
@@ -151,13 +153,14 @@ export function exorciseSuite(suite: TestSuite): { suite: TestSuite; applied: Fi
       if (rounds++ < MAX_ROUNDS) {
         for (const f of detectAll({ id: 'case', name: 'case', cases: [testCase] }).findings) {
           const outcome = proposeFix(testCase, f)
-          if (outcome.ok && outcome.proposal.check.resolved) {
+          if (outcome.ok && outcome.proposal.check.resolved && !outcome.proposal.after.some(c => seen.has(caseToText(c)))) {
             fixed = outcome.proposal
             break
           }
         }
       }
       if (fixed) {
+        for (const c of fixed.after) seen.add(caseToText(c))
         applied.push(fixed)
         queue = [...fixed.after, ...queue]
       } else {

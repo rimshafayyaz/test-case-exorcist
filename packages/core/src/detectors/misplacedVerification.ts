@@ -72,6 +72,18 @@ function isTickAction(text: string, span: Span): boolean {
   return TICK_TARGET.test(rest)
 }
 
+/**
+ * "Tap Confirm", "click the Verify button", "press 'Check'": a capitalised or
+ * quoted check word right after a UI verb is a button label, not a check.
+ */
+const LABEL_VERB = /\b(?:click|tap|press|hit|select|choose|push)(?:\s+(?:on|the))*\s+["'“‘]?$/i
+function isButtonLabel(text: string, span: Span): boolean {
+  const first = span.text[0] ?? ''
+  const quoted = /["'“‘]$/.test(text.slice(0, span.start))
+  if (!quoted && first === first.toLowerCase()) return false
+  return LABEL_VERB.test(text.slice(0, span.start))
+}
+
 /** True when a span lies inside any of the given spans. */
 function insideAny(span: Span, others: Span[]): boolean {
   return others.some(o => span.start >= o.start && span.end <= o.end)
@@ -114,6 +126,7 @@ export function findChecks(text: string, _isFirstStep = false): { checks: Span[]
     if (insideAny(span, makeSure)) continue
     if (span.text.toLowerCase() === 'ensure' && isSetupState(text, span)) continue
     if (isTickAction(text, span)) continue
+    if (isButtonLabel(text, span)) continue
     if (isDocReference(text, span)) {
       docReferences.push(span)
       continue

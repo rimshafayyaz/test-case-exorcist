@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { misplacedVerification, reasonFor } from '../../src/detectors/misplacedVerification.js'
+import { misplacedVerification, reasonFor, findChecks } from '../../src/detectors/misplacedVerification.js'
 import type { TestCase, Step } from '../../src/models/index.js'
 
 function makeCase(id = 'tc-1'): TestCase {
@@ -203,5 +203,14 @@ describe('misplacedVerification — "See"/"Observe" pointing at documentation', 
     const { findings, reviewCandidates } = run('See the Help page and verify the total.')
     expect(findings).toHaveLength(1)
     expect(reviewCandidates).toHaveLength(0)
+  })
+})
+
+describe('Misplaced Verification — button labels', () => {
+  it.each(['Tap Confirm.', 'Click the Verify button.', "Press 'check' to continue."])('"%s" is a button, not a check', action => {
+    expect(findChecks(action).checks).toEqual([])
+  })
+  it('a real check is still found', () => {
+    expect(findChecks('Tap Save and confirm the payment.').checks.map(c => c.text)).toEqual(['confirm'])
   })
 })

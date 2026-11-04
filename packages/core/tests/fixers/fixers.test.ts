@@ -266,3 +266,11 @@ describe('Extract Precondition — "With …:" prefix', () => {
     expect(p.check.resolved).toBe(true)
   })
 })
+
+describe('exorciseSuite — no ping-pong between fixes', () => {
+  it('stops instead of moving the same text back and forth', () => {
+    const tc = makeCase([['Open the Cards screen.', ['The list of cards is displayed.']], ['Tap Unfreeze card.', ['Click Confirm to close the dialog.']], ['Verify that a new card is ordered.', []]])
+    const { applied } = exorciseSuite({ id: 's', name: 's', cases: [tc] })
+    expect(applied.length).toBeLessThan(6)
+  })
+})

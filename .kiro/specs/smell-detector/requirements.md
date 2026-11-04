@@ -36,10 +36,10 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 #### Acceptance Criteria
 
-1. WHEN an action or verification contains a verb followed by an indefinite determiner (e.g. "any", "some") THEN the system SHALL report Ambiguous Test.
+1. WHEN an action or verification contains a verb followed by an indefinite determiner (any, some, either, several, various, a few) or an indefinite pronoun THEN the system SHALL report Ambiguous Test.
 2. WHEN an action or verification contains an indefinite pronoun, a comparative or superlative adjective, an adverb of manner or a comparative adverb THEN the system SHALL report Ambiguous Test.
 3. WHEN an action or verification contains a word from the vague-word list in `docs/smells.md` THEN the system SHALL report Ambiguous Test.
-4. WHEN a match relies only on a part-of-speech pattern and not on the vague-word list THEN the system SHALL add the step to the review candidates instead of reporting a finding.
+4. WHEN a match relies only on a part-of-speech pattern (comparative/superlative) or on wording that is often fine (a command with an unnamed object "Insert a media card", "each"/"every", an unclear subject "It should …") THEN the system SHALL add the step to the review candidates instead of reporting a finding.
 
 ### Requirement 4 — Conditional Test (Fork Spirit)
 
@@ -49,6 +49,7 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 1. WHEN an action or verification contains a subordinating conjunction (e.g. if, when, whether, unless, otherwise, in case) THEN the system SHALL report Conditional Test.
 2. WHEN "when" is used only as a time reference without a condition (e.g. "Note when the download finishes") THEN the system SHALL add the step to the review candidates instead of reporting a finding.
+3. WHEN "or" joins two commands or two quoted options (alternative flows) THEN the system SHALL report Conditional Test; a list of labels ("Click OK, Cancel or Close") SHALL NOT be reported.
 
 ### Requirement 5 — Eager Action (Hydra)
 
@@ -58,6 +59,7 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 1. WHEN an action contains more than one imperative verb THEN the system SHALL report Eager Action.
 2. WHEN reporting Eager Action THEN the reason SHALL state how many actions were found.
+3. WHEN an action combines a command with a check ("Close flip and check app continuity") THEN the check SHALL count as an operation, so the step is reported as Eager Action as well as Misplaced Verification (2026 study rule). A step with only checks SHALL NOT be reported as Eager Action.
 
 ### Requirement 6 — Misplaced Action (Wanderer)
 
@@ -67,6 +69,8 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 1. WHEN a verification clause starts with an imperative verb that is not a verification verb THEN the system SHALL report Misplaced Action with `field: "verification"`.
 2. WHEN a verification starts with a verification verb (verify, check, confirm, ensure, observe, see, …) THEN the system SHALL NOT report Misplaced Action.
+3. WHEN a clause follows "and"/"or"/"then" inside a sentence that is a statement, or is a single word in a list, or is a label followed by ":" THEN the system SHALL NOT report it as Misplaced Action.
+4. WHEN a verification starts with a shell command line (e.g. "sudo cat /proc/mdstat") THEN the system SHALL report Misplaced Action.
 
 ### Requirement 7 — Misplaced Precondition (Early Riser)
 
@@ -76,7 +80,9 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 1. WHEN the first step's action describes system state (subject + auxiliary + past participle, e.g. "The monitor is not connected") THEN the system SHALL report Misplaced Precondition.
 2. WHEN the first step's action contains prerequisite wording (prerequisite, beforehand, already) THEN the system SHALL report Misplaced Precondition.
-3. WHEN the step is not the first step of its test case THEN the system SHALL NOT report Misplaced Precondition.
+3. WHEN the step is not the first step of its test case THEN the system SHALL NOT report plain state descriptions or prerequisite wording as Misplaced Precondition.
+4. WHEN any step opens with "make sure" / "ensure that" / "ensure" followed by a setup state — a state description, a possession or capability ("you have", "supports") or a place ("is not in fullscreen mode") — THEN the system SHALL report Misplaced Precondition and NOT Misplaced Verification.
+5. WHEN any step opens with a "With …:" prefix ("With an HDMI monitor plugged in: …") THEN the system SHALL report Misplaced Precondition with the span on the prefix.
 
 ### Requirement 8 — Misplaced Verification (Mixed Soul)
 
@@ -95,6 +101,8 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 1. WHEN a step has no non-empty verification THEN the system SHALL report Unverified Action with `field: "verification"`.
 2. WHEN a step's verifications are all empty or whitespace THEN the system SHALL treat them as missing.
+3. WHEN a verification starts with "TODO" (a placeholder added by the fixer) THEN every detector SHALL treat it as empty, so the step still counts as unverified until the tester writes the expected result.
+4. WHEN the action already holds a check (Misplaced Verification) or is a setup state (Misplaced Precondition) THEN the system SHALL NOT also report Unverified Action.
 
 ### Requirement 10 — No double flagging
 
@@ -102,7 +110,7 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 
 #### Acceptance Criteria
 
-1. WHEN two findings have the same `caseId`, `stepIndex`, `field` and `smellName` THEN the system SHALL keep only one.
+1. WHEN two findings have the same `caseId`, `stepIndex`, `field`, `verificationIndex` and `smellName` THEN the system SHALL keep only one.
 2. WHEN a word belongs to a group in the "Keyword ownership" table of `docs/smells.md` THEN only the detector that owns that group SHALL use it.
 
 ### Requirement 11 — Review candidates for the LLM
@@ -112,7 +120,8 @@ Out of scope: importing files (spec `importers`), LLM review (spec `llm-reviewer
 #### Acceptance Criteria
 
 1. WHEN a detector cannot decide confidently THEN the system SHALL add a `ReviewCandidate` with `caseId`, `stepIndex`, `smellName` and a short `hint`.
-2. WHEN review candidates are returned THEN the system SHALL NOT also return a finding for the same step and smell.
+2. WHEN review candidates are returned THEN the system SHALL NOT also return a finding for the same step and smell. Each detector drops its review candidates for a step when it reports a finding for that step, and the orchestrator applies the same rule across detectors.
+3. WHEN a review candidate concerns a verification THEN it SHALL include `field: "verification"` and `verificationIndex`, so the LLM reviewer knows which entry to examine.
 
 ### Requirement 12 — Performance and quality
 

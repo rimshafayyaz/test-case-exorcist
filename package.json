@@ -1,0 +1,19 @@
+{
+  "name": "test-case-exorcist",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "bench": "tsx bench/run.ts",
+    "bench:heldout": "tsx bench/heldout.ts",
+    "bench:llm": "tsx bench/llm.ts"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "devDependencies": {
+    "tsx": "4.23.15"
+  }
+}

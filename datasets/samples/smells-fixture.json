@@ -1,0 +1,160 @@
+{
+  "id": "smells-fixture",
+  "name": "Smell Detector Fixture Suite",
+  "cases": [
+    {
+      "id": "case-ambiguous",
+      "title": "Ambiguous Test — Fog Wraith",
+      "preconditions": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Open the Calculator application.",
+          "verifications": ["The Calculator window is displayed."]
+        },
+        {
+          "index": 1,
+          "action": "Reload the page quickly.",
+          "verifications": ["The page is displayed."]
+        }
+      ]
+    },
+    {
+      "id": "case-conditional",
+      "title": "Conditional Test — Fork Spirit",
+      "preconditions": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Open the login page.",
+          "verifications": ["The login form is displayed."]
+        },
+        {
+          "index": 1,
+          "action": "If you have a USB drive, plug it in.",
+          "verifications": ["The drive is detected."]
+        }
+      ]
+    },
+    {
+      "id": "case-eager",
+      "title": "Eager Action — Hydra",
+      "preconditions": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Open the Settings application.",
+          "verifications": ["The Settings window is displayed."]
+        },
+        {
+          "index": 1,
+          "action": "Open settings, change language and save.",
+          "verifications": ["The language setting is updated."]
+        }
+      ]
+    },
+    {
+      "id": "case-misplaced-action",
+      "title": "Misplaced Action — Wanderer",
+      "preconditions": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Press the Submit button.",
+          "verifications": ["Click OK to continue."]
+        }
+      ]
+    },
+    {
+      "id": "case-misplaced-precondition",
+      "title": "Misplaced Precondition — Early Riser",
+      "preconditions": ["A valid user account exists in the system."],
+      "steps": [
+        {
+          "index": 0,
+          "action": "The monitor is not connected, and the PC is not paired.",
+          "verifications": ["The screen remains off."]
+        },
+        {
+          "index": 1,
+          "action": "Connect the monitor cable to the PC.",
+          "verifications": ["The display powers on."]
+        }
+      ]
+    },
+    {
+      "id": "case-misplaced-verification",
+      "title": "Misplaced Verification — Mixed Soul",
+      "preconditions": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Open the application.",
+          "verifications": ["The application window is displayed."]
+        },
+        {
+          "index": 1,
+          "action": "Verify that the app continues to run.",
+          "verifications": ["The application is running."]
+        }
+      ]
+    },
+    {
+      "id": "case-unverified",
+      "title": "Unverified Action — Silent Ghost",
+      "preconditions": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Open the browser.",
+          "verifications": []
+        },
+        {
+          "index": 1,
+          "action": "Navigate to the login page.",
+          "verifications": ["The login page is displayed."]
+        },
+        {
+          "index": 2,
+          "action": "Click Save.",
+          "verifications": []
+        }
+      ]
+    },
+    {
+      "id": "case-clean",
+      "title": "Clean Case — No Smells",
+      "preconditions": [
+        "Verify the user is logged in quickly.",
+        "The application is installed on the test machine."
+      ],
+      "steps": [
+        {
+          "index": 0,
+          "action": "Launch the Calculator application.",
+          "verifications": ["The Calculator window appears."]
+        },
+        {
+          "index": 1,
+          "action": "Enter the value 42.",
+          "verifications": ["The number 42 is displayed in the input field."]
+        },
+        {
+          "index": 2,
+          "action": "Press the plus button.",
+          "verifications": ["The plus operator is shown."]
+        },
+        {
+          "index": 3,
+          "action": "Enter the value 8.",
+          "verifications": ["The number 8 is displayed in the input field."]
+        },
+        {
+          "index": 4,
+          "action": "Press the equals button.",
+          "verifications": ["The result 50 is displayed."]
+        }
+      ]
+    }
+  ]
+}

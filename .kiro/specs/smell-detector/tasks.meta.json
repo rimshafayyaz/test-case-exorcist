@@ -1,0 +1,72 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Set up the workspace and the core package": [
+      {
+        "executionId": "aaf28b78-7b28-4acb-bec0-ad6534534783",
+        "chatSessionId": "sess_49b68815-d640-4d8d-abe1-0d19c4959371",
+        "timestamp": 1793603627283
+      },
+      {
+        "executionId": "aaf28b78-7b28-4acb-bec0-ad6534534783",
+        "chatSessionId": "sess_49b68815-d640-4d8d-abe1-0d19c4959371",
+        "timestamp": 1793604368482
+      }
+    ],
+    "2. Define the data models and smell constants": [
+      {
+        "executionId": "36e493b0-6ab8-45d4-9a84-5bc733dcf8c4",
+        "chatSessionId": "sess_6ff619a7-6484-4be5-9af3-a455aa2077d6",
+        "timestamp": 1793604376284
+      },
+      {
+        "executionId": "36e493b0-6ab8-45d4-9a84-5bc733dcf8c4",
+        "chatSessionId": "sess_6ff619a7-6484-4be5-9af3-a455aa2077d6",
+        "timestamp": 1793604450696
+      }
+    ],
+    "3. Build the text utilities": [
+      {
+        "executionId": "352200cc-910c-4360-85e8-7c08e7c10672",
+        "chatSessionId": "sess_efb7453a-22af-4243-95d5-013b008bc267",
+        "timestamp": 1793605143141
+      },
+      {
+        "executionId": "352200cc-910c-4360-85e8-7c08e7c10672",
+        "chatSessionId": "sess_efb7453a-22af-4243-95d5-013b008bc267",
+        "timestamp": 1793607676078
+      }
+    ],
+    "4. Implement the Unverified Action detector": [
+      {
+        "executionId": "2180a425-99f0-4bbb-b753-eb69e122fb0e",
+        "chatSessionId": "sess_18d59dc0-ba30-43ef-a4f6-d41f013c73b9",
+        "timestamp": 1793608421621
+      },
+      {
+        "executionId": "2180a425-99f0-4bbb-b753-eb69e122fb0e",
+        "chatSessionId": "sess_18d59dc0-ba30-43ef-a4f6-d41f013c73b9",
+        "timestamp": 1793608557405
+      }
+    ],
+    "5. Implement the Conditional Test detector": [
+      {
+        "executionId": "1cb17d90-cf92-4e7d-9e3b-b80b8fd66de0",
+        "chatSessionId": "sess_18d59dc0-ba30-43ef-a4f6-d41f013c73b9",
+        "timestamp": 1793608747574
+      },
+      {
+        "executionId": "1cb17d90-cf92-4e7d-9e3b-b80b8fd66de0",
+        "chatSessionId": "sess_18d59dc0-ba30-43ef-a4f6-d41f013c73b9",
+        "timestamp": 1793608892818
+      }
+    ],
+    "12. Add fixtures and the integration test": [
+      {
+        "executionId": "a241f044-da85-473d-84ff-3ed51beb41f0",
+        "chatSessionId": "sess_18d59dc0-ba30-43ef-a4f6-d41f013c73b9",
+        "timestamp": 1793621050654
+      }
+    ]
+  }
+}

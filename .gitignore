@@ -150,3 +150,6 @@ vite.config.ts.timestamp-*
 
 # Personal notes (not part of the project)
 .private/
+
+# Raw Zenodo download (the extracted data is in datasets/benchmark/)
+zenodo-gemini3/

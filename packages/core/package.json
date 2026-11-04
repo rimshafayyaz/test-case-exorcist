@@ -1,0 +1,30 @@
+{
+  "name": "@exorcist/core",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src tests"
+  },
+  "dependencies": {
+    "compromise": "14.14.3",
+    "papaparse": "5.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "@types/papaparse": "5.5.2",
+    "fast-check": "4.10.2",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}

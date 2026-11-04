@@ -1,0 +1,64 @@
+{
+  "id": "fintech-haunted",
+  "name": "Haunted mobile banking suite (fintech demo)",
+  "cases": [
+    {
+      "id": "BANK-AMB", "title": "Ambiguous Test — Fog Wraith", "preconditions": ["The customer is logged in."],
+      "steps": [
+        { "index": 0, "action": "Open the Transfers screen.", "verifications": ["The Transfers screen is displayed."] },
+        { "index": 1, "action": "Transfer a reasonable amount to a saved payee.", "verifications": ["The transfer is completed."] }
+      ]
+    },
+    {
+      "id": "BANK-CON", "title": "Conditional Test — Fork Spirit", "preconditions": ["The customer is logged in."],
+      "steps": [
+        { "index": 0, "action": "Open the Cards screen.", "verifications": ["The list of cards is displayed."] },
+        { "index": 1, "action": "If the card is locked, tap Unlock card.", "verifications": ["The card status shows Active."] }
+      ]
+    },
+    {
+      "id": "BANK-EAG", "title": "Eager Action — Hydra", "preconditions": ["The customer is logged in."],
+      "steps": [
+        { "index": 0, "action": "Open the Bill Pay screen.", "verifications": ["The list of billers is displayed."] },
+        { "index": 1, "action": "Select the biller, enter the amount and confirm the payment.", "verifications": ["The payment receipt is displayed."] }
+      ]
+    },
+    {
+      "id": "BANK-MA", "title": "Misplaced Action — Wanderer", "preconditions": ["The customer is logged in."],
+      "steps": [
+        { "index": 0, "action": "Tap Send money.", "verifications": ["Enter the one-time password."] }
+      ]
+    },
+    {
+      "id": "BANK-MP", "title": "Misplaced Precondition — Early Riser", "preconditions": ["A customer account exists."],
+      "steps": [
+        { "index": 0, "action": "The debit card is not activated, and the customer has no PIN.", "verifications": ["The Activate card button is shown."] },
+        { "index": 1, "action": "Tap Activate card.", "verifications": ["The card status changes to Active."] }
+      ]
+    },
+    {
+      "id": "BANK-MV", "title": "Misplaced Verification — Mixed Soul", "preconditions": ["The customer is logged in."],
+      "steps": [
+        { "index": 0, "action": "Open the Statements screen.", "verifications": ["The list of statements is displayed."] },
+        { "index": 1, "action": "Verify that the latest statement is listed.", "verifications": ["The statement shows the closing balance."] }
+      ]
+    },
+    {
+      "id": "BANK-UV", "title": "Unverified Action — Silent Ghost", "preconditions": [],
+      "steps": [
+        { "index": 0, "action": "Log in with a valid customer account.", "verifications": [] },
+        { "index": 1, "action": "Open the Transactions screen.", "verifications": ["The last 30 days of transactions are listed."] },
+        { "index": 2, "action": "Tap Download statement.", "verifications": [] }
+      ]
+    },
+    {
+      "id": "BANK-CLEAN", "title": "Clean Case — No Ghosts", "preconditions": ["The customer is logged in.", "The checking account balance is at least 500.00 USD."],
+      "steps": [
+        { "index": 0, "action": "Open the Transfers screen.", "verifications": ["The Transfers screen is displayed."] },
+        { "index": 1, "action": "Enter 100.00 in the Amount field.", "verifications": ["The amount 100.00 is shown."] },
+        { "index": 2, "action": "Select the payee Jane Doe.", "verifications": ["Jane Doe is shown as the payee."] },
+        { "index": 3, "action": "Tap Send.", "verifications": ["The message \"Transfer sent\" is displayed."] }
+      ]
+    }
+  ]
+}

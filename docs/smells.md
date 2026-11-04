@@ -25,9 +25,10 @@ Detectors, fixers, the LLM prompt and the UI must follow it. Change this file fi
 
 | Word group | Owned by |
 |---|---|
-| Verification verbs: verify, check, confirm, ensure, assert, validate, observe, see | Misplaced Verification (in actions); excluded from Misplaced Action |
-| "make sure" / "ensure that" | **Tie-break:** in the **first step** together with a state description → Misplaced Precondition; in any other step, or without a state description → Misplaced Verification |
+| Verification verbs: verify, check, confirm, ensure, assert, validate, observe, see | Misplaced Verification (in actions); excluded from Misplaced Action. A check next to another action is also a second operation, so the step is **also** Eager Action (2026 study rule: "mixes actions and verification language → both") |
+| "make sure" / "ensure that" / "ensure" | **Tie-break:** when it **opens the step** and introduces a state description ("Make sure the user is logged in") → Misplaced Precondition, in any step; after another action ("Click Save and make sure the file is stored") or without a state description ("Make sure to click Save") → Misplaced Verification |
 | Subordinating conjunctions: if, whether, unless, otherwise, in case, depending on | Conditional Test |
+| "or" between two commands or two quoted options ("Press the Super key, or click the logo") | Conditional Test (alternative flows); a list of labels ("Click OK, Cancel or Close") is not reported |
 | "when" | Conditional Test (confident finding) when followed by a condition clause; review candidate when used only as a time reference (e.g. "Note when the download finishes") |
 | State description (subject + auxiliary + past participle) in the **first** step | Misplaced Precondition |
 | Vague words, indefinite determiners/pronouns, comparatives, manner adverbs | Ambiguous Test |
@@ -38,7 +39,7 @@ Detectors, fixers, the LLM prompt and the UI must follow it. Change this file fi
 ## 1. Ambiguous Test — "Fog Wraith"
 - **Definition:** An under-specified step that leaves room for interpretation, so pass/fail can't be decided objectively.
 - **Field:** action or verification
-- **Detection (research rules):** verb + indefinite determiner ("open **any** application"); indefinite pronouns (something, anyone); comparative/superlative adjectives (faster, best); adverbs of manner (properly, correctly, quickly); comparative adverbs (more easily). Extra: vague-word list (similar, better, clear, easy, fast, works, normal, appropriate).
+- **Detection (research rules):** verb + indefinite determiner ("open **any** application"); indefinite pronouns (something, anyone); comparative/superlative adjectives (faster, best); adverbs of manner (properly, correctly, quickly); comparative adverbs (more easily). Extra: vague-word list (similar, better, clear, easy, fast, works, normal, appropriate, reasonable, approximately, as expected, user-friendly, as you like) and manner adverbs (… adequately, randomly, briefly). Verb + indefinite determiner (any, some, either, several, various, a few) and indefinite pronouns are findings; comparatives, a command with an unnamed object ("Insert a media card"), "each"/"every" and an unclear subject ("It should …") are review candidates for the LLM reviewer.
 - **Smelly:** "Open any application and suspend machine." · "Check the page loads quickly."
 - **Clean:** "Open the Calculator application." · "The page loads within 2 seconds."
 - **Fix — Extract Ambiguity:** rewrite the vague part into a specific, measurable statement (LLM suggestion; user confirms).
@@ -62,7 +63,7 @@ Detectors, fixers, the LLM prompt and the UI must follow it. Change this file fi
 ## 4. Misplaced Action — "Wanderer"
 - **Definition:** An action is written as a verification.
 - **Field:** verification
-- **Detection:** imperative verb that is **not** a verification verb at the start of a verification clause.
+- **Detection:** imperative verb that is **not** a verification verb at the start of a verification clause. A clause after "and"/"or"/"then" inside a statement shares its subject and is not a command ("Apt hits each mirror and update all of them"); a lone word or a label before ":" is not a command. A shell command line ("sudo cat /proc/mdstat") in an expected result is an action.
 - **Smelly:** verification "Click OK to continue." · "Add the files to the folder as in the previous step."
 - **Clean:** verification "The confirmation dialog closes."
 - **Fix — Extract Action:** move the action from the verifications to the end of the actions.
@@ -70,7 +71,7 @@ Detectors, fixers, the LLM prompt and the UI must follow it. Change this file fi
 ## 5. Misplaced Precondition — "Early Riser"
 - **Definition:** A precondition is written as an action step.
 - **Field:** action of the **first** step
-- **Detection:** the first action step declares system state: subject + auxiliary + past participle ("X is/are (not) <participle>"), or explicit prerequisite wording (prerequisite, beforehand, already).
+- **Detection:** the first action step declares system state: subject + auxiliary + past participle ("X is/are (not) <participle>"), or explicit prerequisite wording (prerequisite, beforehand, already). In **any** step: a step that opens with "make sure" / "ensure" + a setup state — a state description ("Ensure wireless is enabled"), a possession or capability ("Please ensure you have internet access", "Make sure your processor supports …") or a place ("is not in fullscreen mode") — or a "With …:" prefix that lists what must be set up ("With an HDMI monitor plugged in: …"). Prerequisite wording also includes "before proceeding".
 - **Smelly:** step 1 "The monitor is not connected, and the PC is not paired." · step 1 "The user is already logged in."
 - **Clean:** step 1 "Log in as the admin user." (with "User account exists" in preconditions)
 - **Fix — Extract Precondition:** move the first-step state description into the test case preconditions.

@@ -1,0 +1,525 @@
+{
+ "id": "ubuntu-sample",
+ "name": "Ubuntu test cases (2026 study sample)",
+ "cases": [
+  {
+   "id": "hardware/1474_Speakers",
+   "title": "hardware/1474_Speakers",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Ensure that the sound volume is turned to a reasonable level and that the sound is not muted by clicking on the Volume Control applet (the speaker icon in the notification area) and setting the volume",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "On the Unity panel, select Home Folder",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Open the Examples folder. Open the Ubuntu_Free_Culture_Showcase folder",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Select either of the .ogg files",
+     "verifications": [
+      "The file opens in your default media player",
+      "Sound is played through the speakers without noises or distortions."
+     ]
+    },
+    {
+     "index": 4,
+     "action": "Adjust the volume with the Volume Control applet. Verify that the audio volume changes.",
+     "verifications": []
+    },
+    {
+     "index": 5,
+     "action": "Right-click the Volume Control applet and check Mute",
+     "verifications": [
+      "The audio mutes."
+     ]
+    },
+    {
+     "index": 6,
+     "action": "Right-click the Volume Control applet and uncheck Mute",
+     "verifications": [
+      "The audio resumes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "image/1303_Live Session",
+   "title": "image/1303_Live Session",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Boot up the image",
+     "verifications": [
+      "FAMILY boot screen is displayed"
+     ]
+    },
+    {
+     "index": 1,
+     "action": "When ubiquity starts select your language in the left column",
+     "verifications": [
+      "Language is selected, all labels are changed to translated versions"
+     ]
+    },
+    {
+     "index": 2,
+     "action": "Press \"Try FAMILY\" and wait for the Live session to start",
+     "verifications": [
+      "The default desktop is displayed"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hardware/1467_External Microphone",
+   "title": "hardware/1467_External Microphone",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Connect the microphone to the computer.  (This can include a microphone on a headset)",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Right click on the '''Volume Control''' icon on the right side of the top panel",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Open ''Sound Preferences'' or ''Sound Setting''.",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Go to the ''Input'' tab and ensure that the ''Input'' volume of the microphone is set to an appropriate level and is not muted.",
+     "verifications": []
+    },
+    {
+     "index": 4,
+     "action": "Press the ''Super Windows key'', or click the Ubuntu logo in the upper left hand unity panel and search '''Sound Recorder'''.",
+     "verifications": []
+    },
+    {
+     "index": 5,
+     "action": "Click the ''Record'' button (the red circle).",
+     "verifications": []
+    },
+    {
+     "index": 6,
+     "action": "Talk briefly into the microphone.",
+     "verifications": []
+    },
+    {
+     "index": 7,
+     "action": "Click the ''Stop'' button (the gray square).",
+     "verifications": []
+    },
+    {
+     "index": 8,
+     "action": "Click the ''Play'' button (the right-facing triangle).",
+     "verifications": [
+      "Your voice is played back and and no words have been dropped. (Remember to reset your microphone volume to prevent feedback on the internal microphone.)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hardware/1482_Wireless Networking",
+   "title": "hardware/1482_Wireless Networking",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Ensure that Network Manager is running and that no networks are currently connected",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Open Terminal",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Ensure wireless is enabled",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "After approximately 30 seconds, open the network manager",
+     "verifications": [
+      "Your wireless network is visible"
+     ]
+    },
+    {
+     "index": 4,
+     "action": "Connect to your wireless network",
+     "verifications": []
+    },
+    {
+     "index": 5,
+     "action": "Run ifconfig in the terminal",
+     "verifications": [
+      "A new network interface (e.g. \"wlan0\") is present and has received an IP address"
+     ]
+    },
+    {
+     "index": 6,
+     "action": "Run route -n . Note the IP address in the Gateway column. (not \"0.0.0.0\")",
+     "verifications": []
+    },
+    {
+     "index": 7,
+     "action": "Run ping -c 5 [gateway] where [gateway] is the IP address of the Gateway, above.",
+     "verifications": [
+      "The command reports \"5 packets transmitted, 5 packets received\""
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hardware/1484_Internal Data Card Reader",
+   "title": "hardware/1484_Internal Data Card Reader",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Insert a media card into the reader",
+     "verifications": [
+      "The card is recognised"
+     ]
+    },
+    {
+     "index": 1,
+     "action": "Open the file manager",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Find the media card in the menu on the left. Right click on this and open it",
+     "verifications": [
+      "A window opens showing the contents of the card (if any)"
+     ]
+    },
+    {
+     "index": 3,
+     "action": "Right-click within the window and select Create Document → Create Empty File. Call the file test.txt",
+     "verifications": [
+      "test.txt is created"
+     ]
+    },
+    {
+     "index": 4,
+     "action": "Drag test.txt to the trash can in the left hand menu",
+     "verifications": [
+      "test.txt is removed from the card"
+     ]
+    },
+    {
+     "index": 5,
+     "action": "Close the card window",
+     "verifications": []
+    },
+    {
+     "index": 6,
+     "action": "Eject the card",
+     "verifications": [
+      "The icon is removed from the desktop"
+     ]
+    },
+    {
+     "index": 7,
+     "action": "Repeat for every type of media supported (e.g. CF, SD, MMC, etc.)",
+     "verifications": []
+    }
+   ]
+  },
+  {
+   "id": "image/1434_Desktop (Xubuntu)",
+   "title": "image/1434_Desktop (Xubuntu)",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "If you installed Xubuntu using English as the default keyboard layout and language, try to add different languages for your system:",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Go to Language Support (Applications -> Settings Manager -> Language Support)",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Press the Install / Remove Languages...",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Select as many languages as you like, and install them by pressing the Apply Changes button",
+     "verifications": []
+    },
+    {
+     "index": 4,
+     "action": "When they have been successfully installed, log out from the session, and select alternating languages at the login screen, next to the right of the session selector (Xubuntu Session)",
+     "verifications": [
+      "Confirm that the main menus and outputs in the desktop are translated"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "image/1448_Unity Lenses",
+   "title": "image/1448_Unity Lenses",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Tap super to show the dash",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Click on the file lens icon",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Make a search",
+     "verifications": [
+      "It should impact the result on each category"
+     ]
+    },
+    {
+     "index": 3,
+     "action": "Open the filter by clicking on \"Filter Results\"",
+     "verifications": []
+    },
+    {
+     "index": 4,
+     "action": "Change the filters for each of filter type",
+     "verifications": [
+      "It should change the results, at least on one category"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "image/1628_Xubuntu Post-install",
+   "title": "image/1628_Xubuntu Post-install",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Open any application and suspend machine",
+     "verifications": [
+      "Machine suspends"
+     ]
+    },
+    {
+     "index": 1,
+     "action": "Restart suspended machine and unlock",
+     "verifications": [
+      "Desktop shows previously started application"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "image/1552_EC2CloudImages test",
+   "title": "image/1552_EC2CloudImages test",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "'ssh-keyscan -t rsa, dsa $hostname': should differ for each running instance.",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "You can ssh to instance as 'ubuntu@${hostname}'",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Ubuntu user can 'sudo' without password prompt, and that 'sudo -l' contains '(ALL) NOPASSWD: ALL'.",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Attempt to ssh to each running instance as 'root@${hostname}'.",
+     "verifications": [
+      "Access is denied and provides a message suggesting use of 'ubuntu' user."
+     ]
+    },
+    {
+     "index": 4,
+     "action": "Run 'apt-get update' and verify that an ec2 mirror is used.",
+     "verifications": [
+      "ec2 mirror looks like '(region).archive.ubuntu.com'."
+     ]
+    },
+    {
+     "index": 5,
+     "action": "Running 'ec2-get-console-output' returns console output with boot messages",
+     "verifications": []
+    }
+   ]
+  },
+  {
+   "id": "image/1658_Xubuntu Core Upgrade taskesel",
+   "title": "image/1658_Xubuntu Core Upgrade taskesel",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Install the core task in a current release.",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Obtain all updates for your system.",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Make sure xubuntu-desktop is not installed.",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Upgrade to the development release.",
+     "verifications": [
+      "This should upgrade without installing any metapackages."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "image/1442_Mythbuntu Frontend",
+   "title": "image/1442_Mythbuntu Frontend",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Go though the Ubiquity install as you would any other install. Most options won't matter for this testcase, but be sure to choose the following options",
+     "verifications": [
+      "- Do NOT name the user mythtv. - Automatic (Guided) Partitioning. - \"Frontend\". - If you have no remote, choose no remote suppport. - For the security key, enter the PIN from the backend (in the backend testcase, this is set to 1234)"
+     ]
+    },
+    {
+     "index": 1,
+     "action": "Once installation is finished, remove the installation media and reboot.",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Once the machine boots up, it should boot into the frontend.",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Select \"Watch TV\". (this will only work if you have a backend already in the network)",
+     "verifications": [
+      "The demo video should start playing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "image/1454_Dist-Upgrade",
+   "title": "image/1454_Dist-Upgrade",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Install the specific release you wish to dist-upgrade from",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Install all updates available for the release you want to upgrade by running update-manager. Click Check if any update is availabe, and click Install to install them",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Watch it update, noting any errors",
+     "verifications": []
+    },
+    {
+     "index": 3,
+     "action": "Reboot into your new system:",
+     "verifications": [
+      "Any errors encountered during the upgrade? Any errors encountered after rebooting to new desktop? Does your hardware still work properly? Are you experiencing any application or background service crashes?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "packages/1423_LibreOffice",
+   "title": "packages/1423_LibreOffice",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Open a Word document format .doc or .docx and save it in ODF format.",
+     "verifications": [
+      "The file can be opened and saved correctly in the revised format."
+     ]
+    },
+    {
+     "index": 1,
+     "action": "Then open the document again.",
+     "verifications": [
+      "After the closing and opening, do the contents look the same in the different file formats?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "packages/1424_Nautilus",
+   "title": "packages/1424_Nautilus",
+   "preconditions": [],
+   "steps": [
+    {
+     "index": 0,
+     "action": "Please ensure the Nautilus window is running and the Nautilus window is focused",
+     "verifications": []
+    },
+    {
+     "index": 1,
+     "action": "Click the Search Icon in the top",
+     "verifications": []
+    },
+    {
+     "index": 2,
+     "action": "Input 'test'",
+     "verifications": [
+      "the 'test' folder was shown?"
+     ]
+    },
+    {
+     "index": 3,
+     "action": "Please ensure the Nautilus window is running and the Nautilus window is focused",
+     "verifications": []
+    },
+    {
+     "index": 4,
+     "action": "Drag moveme.txt and drop into the folder test.",
+     "verifications": [
+      "Is the file moveme.txt now located in 'test' folder?"
+     ]
+    }
+   ]
+  }
+ ]
+}

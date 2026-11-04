@@ -1,0 +1,52 @@
+# Builds the web app and publishes it on GitHub Pages.
+# One-time setup: repository Settings → Pages → Source: "GitHub Actions".
+name: Deploy web app to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.16.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @exorcist/core test
+        env:
+          # Shared CI machines are slower than a laptop.
+          EXORCIST_PERF_BUDGET_MS: '1500'
+      - run: pnpm --filter @exorcist/web build
+        env:
+          # The site lives at https://<user>.github.io/<repository>/
+          BASE_PATH: /${{ github.event.repository.name }}/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

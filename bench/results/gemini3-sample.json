@@ -1,0 +1,49 @@
+{
+  "items": 103,
+  "ms": 270.40733400000005,
+  "rules": {
+    "tp": 77,
+    "fp": 7,
+    "fn": 30,
+    "tn": 28
+  },
+  "rulesF1": 0.806282722513089,
+  "perSmell": {
+    "AmbiguousTest": {
+      "tp": 11,
+      "fp": 2,
+      "fn": 17
+    },
+    "ConditionalTest": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0
+    },
+    "EagerAction": {
+      "tp": 16,
+      "fp": 0,
+      "fn": 6
+    },
+    "MisplacedAction": {
+      "tp": 2,
+      "fp": 1,
+      "fn": 0
+    },
+    "MisplacedPrecondition": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 1
+    },
+    "MisplacedVerification": {
+      "tp": 6,
+      "fp": 1,
+      "fn": 4
+    },
+    "UnverifiedAction": {
+      "tp": 29,
+      "fp": 2,
+      "fn": 2
+    }
+  },
+  "gemini3F1": 0.9107981220657277
+}

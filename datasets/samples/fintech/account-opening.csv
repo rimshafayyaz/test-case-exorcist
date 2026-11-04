@@ -1,0 +1,10 @@
+Test Case ID,Title,Preconditions,Step,Action,Expected Result
+KYC-01,Open a savings account online,The applicant has a valid email address,1,Open the account opening page.,The application form is displayed.
+KYC-01,Open a savings account online,,2,"Enter the applicant's name, date of birth and address.",The fields are filled.
+KYC-01,Open a savings account online,,3,Upload some identity document.,The document is accepted.
+KYC-01,Open a savings account online,,4,Tap Submit.,
+KYC-02,Reject an applicant under 18,,1,Make sure the applicant is 17 years old.,
+KYC-02,Reject an applicant under 18,,2,Enter the date of birth and tap Submit.,"1. The message ""Applicants must be 18 or older"" is displayed.
+2. No account is created."
+KYC-03,Verify the email address,The application is submitted,1,Open the verification email.,The email contains a verification link.
+KYC-03,Verify the email address,,2,Click the verification link.,"The message ""Email verified"" is displayed."

@@ -33,3 +33,9 @@ pnpm workspaces; build with Vite/tsup per package.
 ## LLM output contract
 LLM must return JSON; always validate with zod before trusting any field.
 Schema lives in `packages/core/src/llm/schema.ts`.
+
+## Windows environment rules
+- The terminal is Windows PowerShell 5: use `;` to chain commands, never `&&`.
+- Create and edit files with Kiro's file tools only. Never write files with PowerShell `Set-Content`, `Out-File` or `Get-Content` round-trips — they corrupt UTF-8 characters (→, —, ≥) and add a BOM.
+- All files are UTF-8 without BOM.
+- If `pnpm` is not found in the terminal, run `$env:PATH += ";$env:APPDATA\npm"` first.

@@ -16,7 +16,7 @@
 - `Step { index, action: string, verifications: string[], source }` — Ubuntu format: `<dt>` action, `<dd>` verification.
 - Preconditions belong to the **test case**, not to a step.
 - `Finding { caseId, stepIndex, field: 'action' | 'verification' | 'precondition', verificationIndex?, span?, smellName, ghostName, reason, confidence: 'rule' | 'llm' | 'hybrid', fixName, severity: 'normal' | 'low' }`
-- `ReviewCandidate { caseId, stepIndex, smellName, hint }` — uncertain rule results passed to the LLM reviewer.
+- `ReviewCandidate { caseId, stepIndex, smellName, field?, verificationIndex?, hint }` — uncertain rule results passed to the LLM reviewer.
 - `DetectionResult { findings, reviewCandidates, errors }` — the single output shape used by every interface.
 - `fixName` uses the 2024 transformation names: Extract Conditional, Extract Action, Separate Actions,
   Extract Verification, Extract Ambiguity, Extract Precondition, Fill Verification.

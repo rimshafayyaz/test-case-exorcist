@@ -112,7 +112,14 @@ interface Finding {
   fixName: FixName
 }
 
-interface ReviewCandidate { caseId: string; stepIndex: number; smellName: SmellName; hint: string }
+interface ReviewCandidate {
+  caseId: string
+  stepIndex: number
+  smellName: SmellName
+  field?: 'action' | 'verification' | 'precondition'
+  verificationIndex?: number
+  hint: string
+}
 
 interface DetectionResult {
   findings: Finding[]

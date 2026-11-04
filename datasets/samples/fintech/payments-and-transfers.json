@@ -1,0 +1,48 @@
+{
+  "id": "fintech-payments",
+  "name": "Payments and transfers (fintech sample)",
+  "cases": [
+    {
+      "id": "PAY-001",
+      "title": "Transfer money to a saved payee",
+      "preconditions": ["The customer is logged in.", "The checking account balance is at least 500.00 USD."],
+      "steps": [
+        { "action": "Open the Transfers screen.", "expected": "The Transfers screen is displayed." },
+        { "action": "Select a payee and enter a reasonable amount.", "expected": "The amount is shown in the Amount field." },
+        { "action": "Tap Review, then tap Send.", "expected": ["The message \"Transfer sent\" is displayed.", "The balance decreases by the transfer amount."] }
+      ]
+    },
+    {
+      "id": "PAY-002",
+      "title": "Pay a utility bill",
+      "preconditions": ["The customer is logged in."],
+      "steps": [
+        { "action": "Open the Bill Pay screen.", "expected": "The list of billers is displayed." },
+        { "action": "Select the Electricity biller.", "expected": "The bill amount due is shown." },
+        { "action": "Tap Pay now or schedule the payment for later.", "expected": "The payment is accepted." },
+        { "action": "Open the Payment history screen." }
+      ]
+    },
+    {
+      "id": "PAY-003",
+      "title": "Reject a transfer above the daily limit",
+      "preconditions": ["The customer is logged in.", "The daily transfer limit is 5,000.00 USD."],
+      "steps": [
+        { "action": "Open the Transfers screen.", "expected": "The Transfers screen is displayed." },
+        { "action": "Enter 6,000.00 in the Amount field and tap Send.", "expected": "The message \"Amount exceeds your daily limit\" is displayed." },
+        { "action": "Verify that no transaction appears in the Transactions screen.", "expected": "The balance is unchanged." }
+      ]
+    },
+    {
+      "id": "PAY-004",
+      "title": "Add money to the wallet with a linked card",
+      "preconditions": ["The customer is logged in.", "A debit card is linked to the wallet."],
+      "steps": [
+        { "action": "Open the Wallet screen.", "expected": "The wallet balance is displayed." },
+        { "action": "Tap Add money.", "expected": "The Add money form is displayed." },
+        { "action": "Enter 50.00 in the Amount field.", "expected": "The amount 50.00 is shown." },
+        { "action": "Tap Confirm.", "expected": ["The message \"Money added\" is displayed.", "The wallet balance increases by 50.00."] }
+      ]
+    }
+  ]
+}

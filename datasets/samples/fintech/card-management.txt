@@ -1,0 +1,40 @@
+Test case: Activate a new debit card
+Preconditions:
+- A customer account exists with a new, inactive debit card.
+1. Log in to the mobile banking app with the customer's username and password.
+   Expected: The Accounts overview screen is displayed.
+2. Open the Cards screen, select the new card and tap Activate.
+   Expected: The card status changes to Active.
+3. Enter the last four digits of the card.
+4. Set a new 4-digit PIN.
+   Expected: The message "PIN set successfully" is displayed.
+
+Test case: Freeze and unfreeze a card
+1. Make sure the card is active.
+2. Open the Cards screen.
+   Expected: The list of cards is displayed.
+3. If the card is not frozen, tap Freeze card.
+   Expected: The card status shows Frozen.
+4. Tap Unfreeze card.
+   - Verify that card payments work again.
+
+Test case: Report a lost card
+Preconditions:
+- The customer is logged in.
+1. Open the Cards screen.
+   Expected: The list of cards is displayed.
+2. Tap Report lost card quickly.
+   Expected: A confirmation dialog appears.
+3. Tap Confirm.
+   Expected: Click OK to close the dialog.
+
+Test case: View the card PIN
+Preconditions:
+- The customer is logged in.
+- The card is active.
+1. Open the Cards screen.
+   Expected: The list of cards is displayed.
+2. Tap Show PIN on the active card.
+   Expected: A one-time password is sent by SMS.
+3. Enter the one-time password from the SMS.
+   Expected: The 4-digit PIN is displayed for 10 seconds.

@@ -1,0 +1,1184 @@
+{
+ "source": "Lucas, Gheyi, Ribeiro, Palomba, Martins, Soares. Dumps and Data for \"An Empirical Study of Gemini 3 for Detecting Natural Language Test Smells in Manual Test Case\". Zenodo, 2026. https://doi.org/10.5281/zenodo.20549059 (CC BY 4.0). Extracted from \"Gemini 3.html\": test case, step order, where (<dt> action / <dd> verification), step text, baseline labels and Gemini 3 labels.",
+ "items": [
+  {
+   "id": 1,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "Ensure that the sound volume is turned to a reasonable level and that the sound is not muted by clicking on the Volume Control applet (the speaker icon in the notification area) and setting the volume",
+   "baseline": [
+    "AmbiguousTest",
+    "EagerAction",
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "EagerAction",
+    "MisplacedPrecondition",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "On the Unity panel, select Home Folder",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "Open the Examples folder. Open the Ubuntu_Free_Culture_Showcase folder",
+   "baseline": [
+    "EagerAction",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "Select either of the .ogg files",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 5,
+   "testCase": "hardware/1474_Speakers",
+   "where": "verification",
+   "text": "The file opens in your default media player",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 6,
+   "testCase": "hardware/1474_Speakers",
+   "where": "verification",
+   "text": "Sound is played through the speakers without noises or distortions.",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 7,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "Adjust the volume with the Volume Control applet. Verify that the audio volume changes.",
+   "baseline": [
+    "EagerAction",
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 8,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "Right-click the Volume Control applet and check Mute",
+   "baseline": [
+    "EagerAction",
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 9,
+   "testCase": "hardware/1474_Speakers",
+   "where": "verification",
+   "text": "The audio mutes.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 10,
+   "testCase": "hardware/1474_Speakers",
+   "where": "action",
+   "text": "Right-click the Volume Control applet and uncheck Mute",
+   "baseline": [
+    "EagerAction"
+   ],
+   "gemini3": [
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 11,
+   "testCase": "hardware/1474_Speakers",
+   "where": "verification",
+   "text": "The audio resumes",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "image/1303_Live Session",
+   "where": "action",
+   "text": "Boot up the image",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": []
+  },
+  {
+   "id": 2,
+   "testCase": "image/1303_Live Session",
+   "where": "verification",
+   "text": "FAMILY boot screen is displayed",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 3,
+   "testCase": "image/1303_Live Session",
+   "where": "action",
+   "text": "When ubiquity starts select your language in the left column",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "ConditionalTest",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1303_Live Session",
+   "where": "verification",
+   "text": "Language is selected, all labels are changed to translated versions",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 5,
+   "testCase": "image/1303_Live Session",
+   "where": "action",
+   "text": "Press \"Try FAMILY\" and wait for the Live session to start",
+   "baseline": [
+    "EagerAction",
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 6,
+   "testCase": "image/1303_Live Session",
+   "where": "verification",
+   "text": "The default desktop is displayed",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Connect the microphone to the computer.  (This can include a microphone on a headset)",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Right click on the '''Volume Control''' icon on the right side of the top panel",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Open ''Sound Preferences'' or ''Sound Setting''.",
+   "baseline": [
+    "ConditionalTest",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Go to the ''Input'' tab and ensure that the ''Input'' volume of the microphone is set to an appropriate level and is not muted.",
+   "baseline": [
+    "AmbiguousTest",
+    "EagerAction",
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 5,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Press the ''Super Windows key'', or click the Ubuntu logo in the upper left hand unity panel and search '''Sound Recorder'''.",
+   "baseline": [
+    "ConditionalTest",
+    "EagerAction",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 6,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Click the ''Record'' button (the red circle).",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 7,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Talk briefly into the microphone.",
+   "baseline": [
+    "AmbiguousTest",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 8,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Click the ''Stop'' button (the gray square).",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 9,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "action",
+   "text": "Click the ''Play'' button (the right-facing triangle).",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 10,
+   "testCase": "hardware/1467_External Microphone",
+   "where": "verification",
+   "text": "Your voice is played back and and no words have been dropped. (Remember to reset your microphone volume to prevent feedback on the internal microphone.)",
+   "baseline": [
+    "AmbiguousTest",
+    "MisplacedAction"
+   ],
+   "gemini3": [
+    "MisplacedAction"
+   ]
+  },
+  {
+   "id": 1,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Ensure that Network Manager is running and that no networks are currently connected",
+   "baseline": [
+    "EagerAction",
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedPrecondition",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Open Terminal",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Ensure wireless is enabled",
+   "baseline": [
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "MisplacedPrecondition",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "After approximately 30 seconds, open the network manager",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": []
+  },
+  {
+   "id": 5,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "verification",
+   "text": "Your wireless network is visible",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 6,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Connect to your wireless network",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 7,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Run ifconfig in the terminal",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 8,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "verification",
+   "text": "A new network interface (e.g. \"wlan0\") is present and has received an IP address",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 9,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Run route -n . Note the IP address in the Gateway column. (not \"0.0.0.0\")",
+   "baseline": [
+    "EagerAction",
+    "MisplacedVerification",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 10,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "action",
+   "text": "Run ping -c 5 [gateway] where [gateway] is the IP address of the Gateway, above.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 11,
+   "testCase": "hardware/1482_Wireless Networking",
+   "where": "verification",
+   "text": "The command reports \"5 packets transmitted, 5 packets received\"",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Insert a media card into the reader",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "verification",
+   "text": "The card is recognised",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 3,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Open the file manager",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Find the media card in the menu on the left. Right click on this and open it",
+   "baseline": [
+    "EagerAction"
+   ],
+   "gemini3": [
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 5,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "verification",
+   "text": "A window opens showing the contents of the card (if any)",
+   "baseline": [
+    "ConditionalTest"
+   ],
+   "gemini3": [
+    "ConditionalTest"
+   ]
+  },
+  {
+   "id": 6,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Right-click within the window and select Create Document → Create Empty File. Call the file test.txt",
+   "baseline": [
+    "EagerAction"
+   ],
+   "gemini3": [
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 7,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "verification",
+   "text": "test.txt is created",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 8,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Drag test.txt to the trash can in the left hand menu",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 9,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "verification",
+   "text": "test.txt is removed from the card",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 10,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Close the card window",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 11,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Eject the card",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 12,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "verification",
+   "text": "The icon is removed from the desktop",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 13,
+   "testCase": "hardware/1484_Internal Data Card Reader",
+   "where": "action",
+   "text": "Repeat for every type of media supported (e.g. CF, SD, MMC, etc.)",
+   "baseline": [
+    "AmbiguousTest",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 1,
+   "testCase": "image/1434_Desktop (Xubuntu)",
+   "where": "action",
+   "text": "If you installed Xubuntu using English as the default keyboard layout and language, try to add different languages for your system:",
+   "baseline": [
+    "AmbiguousTest",
+    "ConditionalTest",
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "ConditionalTest",
+    "MisplacedPrecondition"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1434_Desktop (Xubuntu)",
+   "where": "action",
+   "text": "Go to Language Support (Applications -> Settings Manager -> Language Support)",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "image/1434_Desktop (Xubuntu)",
+   "where": "action",
+   "text": "Press the Install / Remove Languages...",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1434_Desktop (Xubuntu)",
+   "where": "action",
+   "text": "Select as many languages as you like, and install them by pressing the Apply Changes button",
+   "baseline": [
+    "AmbiguousTest",
+    "EagerAction",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "EagerAction",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 5,
+   "testCase": "image/1434_Desktop (Xubuntu)",
+   "where": "action",
+   "text": "When they have been successfully installed, log out from the session, and select alternating languages at the login screen, next to the right of the session selector (Xubuntu Session)",
+   "baseline": [
+    "AmbiguousTest",
+    "ConditionalTest",
+    "EagerAction",
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "ConditionalTest",
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 6,
+   "testCase": "image/1434_Desktop (Xubuntu)",
+   "where": "verification",
+   "text": "Confirm that the main menus and outputs in the desktop are translated",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "action",
+   "text": "Tap super to show the dash",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "action",
+   "text": "Click on the file lens icon",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "action",
+   "text": "Make a search",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "verification",
+   "text": "It should impact the result on each category",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 5,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "action",
+   "text": "Open the filter by clicking on \"Filter Results\"",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 6,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "action",
+   "text": "Change the filters for each of filter type",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 7,
+   "testCase": "image/1448_Unity Lenses",
+   "where": "verification",
+   "text": "It should change the results, at least on one category",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 1,
+   "testCase": "image/1628_Xubuntu Post-install",
+   "where": "action",
+   "text": "Open any application and suspend machine",
+   "baseline": [
+    "AmbiguousTest",
+    "EagerAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1628_Xubuntu Post-install",
+   "where": "verification",
+   "text": "Machine suspends",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 3,
+   "testCase": "image/1628_Xubuntu Post-install",
+   "where": "action",
+   "text": "Restart suspended machine and unlock",
+   "baseline": [
+    "EagerAction"
+   ],
+   "gemini3": [
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1628_Xubuntu Post-install",
+   "where": "verification",
+   "text": "Desktop shows previously started application",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 1,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "action",
+   "text": "'ssh-keyscan -t rsa, dsa $hostname': should differ for each running instance.",
+   "baseline": [
+    "AmbiguousTest",
+    "MisplacedVerification",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "action",
+   "text": "You can ssh to instance as 'ubuntu@${hostname}'",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "action",
+   "text": "Ubuntu user can 'sudo' without password prompt, and that 'sudo -l' contains '(ALL) NOPASSWD: ALL'.",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": []
+  },
+  {
+   "id": 4,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "action",
+   "text": "Attempt to ssh to each running instance as 'root@${hostname}'.",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": []
+  },
+  {
+   "id": 5,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "verification",
+   "text": "Access is denied and provides a message suggesting use of 'ubuntu' user.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 6,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "action",
+   "text": "Run 'apt-get update' and verify that an ec2 mirror is used.",
+   "baseline": [
+    "EagerAction",
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 7,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "verification",
+   "text": "ec2 mirror looks like '(region).archive.ubuntu.com'.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 8,
+   "testCase": "image/1552_EC2CloudImages test",
+   "where": "action",
+   "text": "Running 'ec2-get-console-output' returns console output with boot messages",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 1,
+   "testCase": "image/1658_Xubuntu Core Upgrade taskesel",
+   "where": "action",
+   "text": "Install the core task in a current release.",
+   "baseline": [
+    "AmbiguousTest",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1658_Xubuntu Core Upgrade taskesel",
+   "where": "action",
+   "text": "Obtain all updates for your system.",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "image/1658_Xubuntu Core Upgrade taskesel",
+   "where": "action",
+   "text": "Make sure xubuntu-desktop is not installed.",
+   "baseline": [
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "MisplacedPrecondition"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1658_Xubuntu Core Upgrade taskesel",
+   "where": "action",
+   "text": "Upgrade to the development release.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 5,
+   "testCase": "image/1658_Xubuntu Core Upgrade taskesel",
+   "where": "verification",
+   "text": "This should upgrade without installing any metapackages.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "image/1442_Mythbuntu Frontend",
+   "where": "action",
+   "text": "Go though the Ubiquity install as you would any other install. Most options won't matter for this testcase, but be sure to choose the following options",
+   "baseline": [
+    "AmbiguousTest",
+    "EagerAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1442_Mythbuntu Frontend",
+   "where": "verification",
+   "text": "- Do NOT name the user mythtv. - Automatic (Guided) Partitioning. - \"Frontend\". - If you have no remote, choose no remote suppport. - For the security key, enter the PIN from the backend (in the backend testcase, this is set to 1234)",
+   "baseline": [
+    "ConditionalTest",
+    "MisplacedAction"
+   ],
+   "gemini3": [
+    "ConditionalTest",
+    "MisplacedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "image/1442_Mythbuntu Frontend",
+   "where": "action",
+   "text": "Once installation is finished, remove the installation media and reboot.",
+   "baseline": [
+    "EagerAction",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1442_Mythbuntu Frontend",
+   "where": "action",
+   "text": "Once the machine boots up, it should boot into the frontend.",
+   "baseline": [
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 5,
+   "testCase": "image/1442_Mythbuntu Frontend",
+   "where": "action",
+   "text": "Select \"Watch TV\". (this will only work if you have a backend already in the network)",
+   "baseline": [
+    "ConditionalTest"
+   ],
+   "gemini3": [
+    "ConditionalTest"
+   ]
+  },
+  {
+   "id": 6,
+   "testCase": "image/1442_Mythbuntu Frontend",
+   "where": "verification",
+   "text": "The demo video should start playing.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "image/1454_Dist-Upgrade",
+   "where": "action",
+   "text": "Install the specific release you wish to dist-upgrade from",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "image/1454_Dist-Upgrade",
+   "where": "action",
+   "text": "Install all updates available for the release you want to upgrade by running update-manager. Click Check if any update is availabe, and click Install to install them",
+   "baseline": [
+    "EagerAction",
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "ConditionalTest",
+    "EagerAction",
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "image/1454_Dist-Upgrade",
+   "where": "action",
+   "text": "Watch it update, noting any errors",
+   "baseline": [
+    "MisplacedVerification"
+   ],
+   "gemini3": [
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 4,
+   "testCase": "image/1454_Dist-Upgrade",
+   "where": "action",
+   "text": "Reboot into your new system:",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 5,
+   "testCase": "image/1454_Dist-Upgrade",
+   "where": "verification",
+   "text": "Any errors encountered during the upgrade? Any errors encountered after rebooting to new desktop? Does your hardware still work properly? Are you experiencing any application or background service crashes?",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 1,
+   "testCase": "packages/1423_LibreOffice",
+   "where": "action",
+   "text": "Open a Word document format .doc or .docx and save it in ODF format.",
+   "baseline": [
+    "AmbiguousTest",
+    "EagerAction"
+   ],
+   "gemini3": [
+    "AmbiguousTest",
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "packages/1423_LibreOffice",
+   "where": "verification",
+   "text": "The file can be opened and saved correctly in the revised format.",
+   "baseline": [
+    "AmbiguousTest"
+   ],
+   "gemini3": [
+    "AmbiguousTest"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "packages/1423_LibreOffice",
+   "where": "action",
+   "text": "Then open the document again.",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 4,
+   "testCase": "packages/1423_LibreOffice",
+   "where": "verification",
+   "text": "After the closing and opening, do the contents look the same in the different file formats?",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "packages/1424_Nautilus",
+   "where": "action",
+   "text": "Please ensure the Nautilus window is running and the Nautilus window is focused",
+   "baseline": [
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "MisplacedPrecondition",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "packages/1424_Nautilus",
+   "where": "action",
+   "text": "Click the Search Icon in the top",
+   "baseline": [
+    "UnverifiedAction"
+   ],
+   "gemini3": [
+    "UnverifiedAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "packages/1424_Nautilus",
+   "where": "action",
+   "text": "Input 'test'",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 4,
+   "testCase": "packages/1424_Nautilus",
+   "where": "verification",
+   "text": "the 'test' folder was shown?",
+   "baseline": [],
+   "gemini3": []
+  },
+  {
+   "id": 1,
+   "testCase": "packages/1424_Nautilus",
+   "where": "action",
+   "text": "Please ensure the Nautilus window is running and the Nautilus window is focused",
+   "baseline": [
+    "MisplacedPrecondition"
+   ],
+   "gemini3": [
+    "EagerAction",
+    "MisplacedPrecondition",
+    "MisplacedVerification"
+   ]
+  },
+  {
+   "id": 2,
+   "testCase": "packages/1424_Nautilus",
+   "where": "action",
+   "text": "Drag moveme.txt and drop into the folder test.",
+   "baseline": [
+    "EagerAction"
+   ],
+   "gemini3": [
+    "EagerAction"
+   ]
+  },
+  {
+   "id": 3,
+   "testCase": "packages/1424_Nautilus",
+   "where": "verification",
+   "text": "Is the file moveme.txt now located in 'test' folder?",
+   "baseline": [],
+   "gemini3": []
+  }
+ ]
+}

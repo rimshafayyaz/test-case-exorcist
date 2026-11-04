@@ -118,7 +118,7 @@ docs/             brief, smell catalog, architecture, Kiro log
 
 - **Steering** (`.kiro/steering/`): product rules, tech stack, repo structure and the testing-domain rules (data policy, accuracy targets).
 - **Specs** (`.kiro/specs/`): requirements, design and task lists for the smell detector, scorer, fixer, LLM reviewer and importers. Every task is ticked off as it is built.
-- **Implementation and review:** Kiro set up the workspace and built the first parts (data models, text utilities, the first detectors), and reviewed the later detector tasks against the spec. An AI coding assistant (Claude) also wrote code against the same specs.
+- **Implementation and review:** Kiro set up the workspace, built the first parts (data models, text utilities, the first detectors) and reviewed the later detector tasks against the spec. Much of the later code (scorer, fixers, importers, LLM reviewer, web app) was written with another AI coding assistant, working from these Kiro specs and task lists.
 
 Session-by-session notes are in the [Kiro log](docs/kiro-log.md).
 
